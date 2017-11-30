@@ -7,8 +7,40 @@
 		<meta name="viewport" content="width=device-width, inital-scale=1, maximum-scale=1">
 	</head>
 	<body>
-		<h1>Pictionary</h1>
-		<p>Body</p>
+		<div class="grey-out hidden">
+			<form class="user">
+				<label for="username">Enter a username</label>
+				<input id="username" type="text" maxlength="12">
+				<button type="submit" id="submitname">Submit</button>
+			</form>
+		</div>
+
+		<div id="main">
+			<h1>Pictionary</h1>
+				<div class="row">
+					<canvas id="canvas"></canvas><div class="users"><ul></ul>
+					<div id="guesses"></div>
+					<div class="draw-buttons">
+						<button value="0" class="clear" type="button">X</button>
+						<button value="#000000" class="black" type="button"></button>
+						<button value="#0000EE" class="blue" type="button"></button>
+						<button value="#66CD00" class="green" type="button"></button>
+						<button value="#FF0000" class="red" type="button"></button>
+						<button value="#FFFF00" class="yellow" type="button"></button>
+						<button value="#FFFFFF" class="white" type="button"></button>
+					</div>
+					</div>
+				</div>
+			<div id="top-message">
+				<div class="draw hiden">
+					<p>The current word is: <span class="word"></span></p>
+				</div>
+				<form id="guess" class="hidden">
+					Guess the word! <input name="guess" class="guess-input" type="text">
+				</form>
+			</div>
+		</div>
+
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="main.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
