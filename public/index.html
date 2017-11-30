@@ -1,26 +1,25 @@
-<!doctype html>
-<title>Pictionary</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!DOCTYPE HTML>
+<head>
+	<title>Pictionary</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<!-- CSS -->
-<link rel="stylesheet" href="default.css">
+	<link rel="stylesheet" href="default.css">
+</head>
 
-
-<!-- JS -->
 <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="main.js"></script>
 
-
 <div class="grey-out hidden">
-    <form class="user"><label for="username">Enter a nickname </label><input id="username" type="text" placeholder="Bob Ross" maxlength="14" autofocus>
-    <button type="submit" id="submitname">Submit</button>
+    <form class="user">
+    	<label for="username">Enter username</label><input id="username" type="text" maxlength="12" autofocus>
+    	<button type="submit" id="submitname">Submit</button>
     </form>
 </div>
 
 <div id="main">
-    <h1>Pictionary</h1>
+    <h1>Pictionary!</h1>
         <div class="row">
             <canvas id="canvas"></canvas><div class="users"><ul></ul>
             <div id="guesses"></div>
@@ -31,14 +30,14 @@
                 <button value="#66CD00" class="green" type="button"></button>
                 <button value="#FF0000" class="red" type="button"></button>
                 <button value="#FFFF00" class="yellow" type="button"></button>
-                <button value="white" class="white" type="button"></button>
+                <button value="#FFFFFF" class="white" type="button"></button>
 
             </div>
             </div>
         </div>
     <div id="top-message">
         <div class="draw hidden" >
-            <p>The secret word is: <span class="word"></span></p>
+            <p>The current word is: <span class="word"></span></p>
         </div>
         <form id="guess" class="hidden" >
             Guess the word! <input name="guess" class="guess-input" type="text">

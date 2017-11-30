@@ -1,9 +1,14 @@
 var socket = io();
 var user;
+var context;
+var canvas;
+var click = false;
+var users = [];
+
 
 function usernameAsk() {
-    $('.grey-out').fadeIn(500);
-    $('.user').fadeIn(500);
+    $('.grey-out').fadeIn(300);
+    $('.user').fadeIn(300);
     $('.user').submit(function(){
         event.preventDefault();
         user = $('#username').val().trim();
@@ -25,10 +30,6 @@ function usernameAsk() {
         $('input.guess-input').focus();
     });
 };
-
-var context;
-var canvas;
-var click = false;
 
 var clearScreen = function() {
     context.clearRect(0, 0, canvas[0].width, canvas[0].height);
@@ -73,8 +74,6 @@ var drawWord = function(word) {
     $('span.word').text(word);
     console.log('Your word to draw is: ' + word);
 };
-
-var users = [];
 
 var userlist = function(names) {
     users = names;
