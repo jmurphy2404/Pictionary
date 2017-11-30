@@ -1,0 +1,15 @@
+{
+  "name": "pictionary",
+  "version": "1.0.0",
+  "description": "pictionary, socket.io",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Murphy",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
