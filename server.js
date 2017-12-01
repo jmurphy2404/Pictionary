@@ -7,35 +7,32 @@ app.use(express.static('public'));
 
 var server = http.Server(app);
 var io = socket_io(server);
-
 server.listen(process.env.PORT || 8080, function() {
 	console.log('Server started at http://localhost:8080');
 });
 
 var users = [];
-
 var words = [
-    "word", "letter", "number", "person", "pen", "police", "people",
-    "sound", "water", "breakfast", "place", "man", "men", "woman", "women", "boy",
-    "girl", "serial killer", "Oregon Trail", "week", "month", "name", "sentence", "line", "air",
-    "land", "home", "hand", "house", "picture", "animal", "mother", "father",
-    "big foot", "sister", "world", "head", "page", "country", "question",
+    "word", "letter", "number", "person", "man", "police", "people", "sound", "water",
+     "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth", "Trump",
+    "girl", "serial killer", "Oregon Trail", "week", "month", "name", "sentence", "line",
+    "land", "home", "hand", "house", "picture", "animal", "mother", "father", "air",
+    "big foot", "sister", "world", "head", "page", "country", "question",  "breakfast",
     "shiba inu", "school", "plant", "food", "sun", "state", "eye", "city", "tree",
-    "farm", "story", "sea", "night", "day", "life", "north", "south", "east",
-    "west", "child", "children", "example", "paper", "music", "river", "car",
+    "farm", "story", "sea", "night", "day", "life", "north", "south", "east", "man",
+    "west", "child", "children", "computer", "paper", "music", "river", "car", "pigeon"
     "Power Rangers", "feet", "book", "science", "room", "friend", "idea", "fish",
-    "mountain", "horse", "watch", "color", "face", "wood", "list", "bird",
+    "mountain", "horse", "watch", "color", "face", "wood", "list", "bird",  "feather",
     "body", "fart", "family", "song", "door", "forest", "wind", "ship", "area",
     "rock", "Captain Planet", "fire", "problem", "airplane", "top", "bottom", "king",
-    "space", "whale", "unicorn", "narwhal", "furniture", "sunset", "sunburn", "Grumpy cat", "feather", "pigeon"
+    "space", "whale", "unicorn", "narwhal", "furniture", "sunset", "sunburn", "Grumpy cat",
 ];
+var wordcount;
 
 function newWord() {
 	wordcount = Math.floor(Math.random() * (words.length));
 	return words[wordcount];
 };
-
-var wordcount;
 
 io.on('connection', function (socket) {
 	io.emit('userlist', users);
