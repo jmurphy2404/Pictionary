@@ -17,19 +17,19 @@ server.listen(process.env.PORT || 8080, function() {
 // Setup variables below, including wordlist for gameplay
 var users = [];
 var words = [
-    "word", "letter", "number", "person", "man", "police", "people", "sound",
-     "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth",
-    "girl", "serial killer", "week", "month", "name", "elephant", "line", "feather",
+    "word", "letter", "number", "person", "man", "people", "sound", "apple",
+    "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth",
+    "girl", "week", "month", "name", "elephant", "feather", "sled", "keyboard",
     "land", "home", "hand", "house", "picture", "animal", "mother", "father", "air",
     "big foot", "sister", "world", "head", "page", "country", "question", "pigeon",
     "school", "plant", "food", "sun", "state", "eye", "city", "tree", "Trump",
     "farm", "story", "sea", "night", "day", "life", "north", "south", "east", "man",
-    "west", "child", "children", "example", "paper", "music", "river", "car",
-    "Power Rangers", "feet", "book", "science", "room", "friend", "idea", "fish",
+    "west", "child", "children", "paper", "music", "river", "car", "France", "Superman",
+    "beetle", "feet", "book", "room", "friend", "idea", "fish", "mouse", "owl",
     "mountain", "horse", "watch", "color", "face", "wood", "list", "bird", "water",
     "body", "fart", "family", "song", "door", "forest", "wind", "ship", "area",
-    "rock", "", "fire", "problem", "airplane", "top", "bottom", "king", "breakfast",
-    "space", "whale", "unicorn", "narwhal", "furniture", "sunset", "sunburn"
+    "rock", "fire", "problem", "airplane", "top", "bottom", "king", "breakfast",
+    "space", "whale", "unicorn", "sunset", "sunburn", "whale", "coffee", ""
 ];
 var wordcount;
 

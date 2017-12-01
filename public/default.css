@@ -1,14 +1,30 @@
 * {
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 body {
-    color: #2F4F4F;
-    background-color: #F6F9ED;
+    color: #f0f3bd;
+    background-color: #028090;
     font-size: 1.5em;
     margin: 0;
     min-width: 1000px;
-    font-family: Helvetica;
+    font-family: Tahoma;
+}
+
+button {
+    width: 10%;
+    height: 20px;
+    display: inline-block;
+    border-radius: 8px;
+}
+
+h1 {
+    background-color: #05668d;
+    font-size: 30px;
+    margin:  0 0 1px 0;
+    padding: 10px 40px;
+    text-align: center;
 }
 
 .row {
@@ -18,13 +34,61 @@ body {
     text-align: center;
 }
 
-.users, canvas, #guess, .draw, .chat-box {
-    border: 1px solid #76EEC6;
+.users, canvas, #guess, .draw, .chat-box, h1 {
+    border: 1.5px solid #76EEC6;
+}
+
+.chat {
+    height: 205px;
+    float: left;
+    overflow: scroll;
+}
+
+.chat > p {
+    height: 100%;
+    margin: 0 0 11px 0;
+}   
+
+.grey-out {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #4A4A4A;
+    opacity: .8;
+    display: none;
+    z-index: 900;
+}
+
+.user {
+    position: relative;
+    background-color:#05668d;
+    max-height: 300px;
+    max-width: 300px;
+    text-align: center;
+    padding: 25px 5px;
+    top: 20%;
+    margin: auto;
+    border-radius: 6px;
+}
+
+#username {
+    width: 90%;
+    font-size: 30px;
+    padding: 5px;
+    margin: 10px;
+}
+
+#submitname {
+    width: 70px;
+    height: 30px;
+    background-color: #05668d;
 }
 
 .users {
     display: inline-block;
-    background-color: white;
+    background-color: #05668d;
     width: 25%;
     height: 505px;
     margin: 10px 10px;
@@ -76,23 +140,8 @@ ul > li {
     height: 28px;
 }
 
-button {
-    width: 10%;
-    height: 20px;
-    display: inline-block;
-    border-radius: 8px;
-}
-
-h1 {
-    background-color: #66CDAA;
-    font-size: 30px;
-    margin:  0 0 1px 0;
-    padding: 10px 40px;
-    text-align: center;
-}
-
 #guess, .draw {
-    background-color: white;
+    background-color: #05668d;
     border-radius: 5px;
     display: block;
     margin: auto;
@@ -117,7 +166,7 @@ h1 {
 }
 
 .draw > p {
-    margin: 15px;
+    margin: 12px;
 }
 
 span.word {
@@ -137,7 +186,7 @@ span.word {
 canvas {
     width: 685px;
     height: 505px;
-    background-color: white;
+    background-color:  white;
     display: inline-block;
     margin: 10px auto;
     cursor: pointer;
@@ -167,51 +216,3 @@ canvas {
     background-color: white;
 }
 
-.chat {
-    height: 205px;
-/*    z-index: +1;
-*/    float: left;
-    overflow: scroll;
-}
-
-.chat > p {
-    height: 100%;
-    margin: 0 0 11px 0;
-}   
-
-.grey-out {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background-color: #4A4A4A;
-    opacity: .8;
-    display: none;
-    z-index: 900;
-}
-
-.user {
-    position: relative;
-    background-color: white;
-    max-height: 300px;
-    max-width: 300px;
-    text-align: center;
-    padding: 25px 5px;
-    top: 20%;
-    margin: auto;
-    border-radius: 6px;
-}
-
-#username {
-    width: 90%;
-    font-size: 30px;
-    padding: 5px;
-    margin: 10px;
-}
-
-#submitname {
-    width: 70px;
-    height: 30px;
-    background-color: #9BCD9B;
-}
