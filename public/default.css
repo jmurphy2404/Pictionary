@@ -42,6 +42,7 @@ h1 {
     height: 205px;
     float: left;
     overflow: scroll;
+    text-align: left;
 }
 
 .chat > p {
@@ -171,7 +172,7 @@ ul > li {
 
 span.word {
     font-weight: bolder;
-    color: #228B22;
+    color: #76EEC6;
 }
 
 .hidden {
