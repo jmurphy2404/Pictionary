@@ -126,6 +126,11 @@ ul > li {
     word-wrap: break-word;
 }
 
+ol > li {
+    font-size: 15px;
+    font-style: bold;
+}
+
 .draw-buttons, #guesses {
     text-align: center;
     margin-bottom: 5px;
