@@ -1,61 +1,62 @@
+// Require http, express and socket
 var http = require('http');
 var express = require('express');
 var socket_io = require('socket.io');
 
+// Create app var from express, point it towards the public directory to serve up assets
 var app = express();
 app.use(express.static('public'));
 
+// Setup server and assign the port, pass the server through the socket.io objecct
 var server = http.Server(app);
 var io = socket_io(server);
 server.listen(process.env.PORT || 8080, function() {
 	console.log('Server started at http://localhost:8080');
 });
 
+// Setup variables below, including wordlist for gameplay
 var users = [];
 var words = [
     "word", "letter", "number", "person", "man", "police", "people", "sound", "water",
      "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth", "Trump",
-    "girl", "serial killer", "Oregon Trail", "week", "month", "name", "sentence", "line",
+    "girl", "serial killer", "Oregon Trail", "week", "month", "name", "elephant", "line",
     "land", "home", "hand", "house", "picture", "animal", "mother", "father", "air",
     "big foot", "sister", "world", "head", "page", "country", "question",  "breakfast",
     "shiba inu", "school", "plant", "food", "sun", "state", "eye", "city", "tree",
     "farm", "story", "sea", "night", "day", "life", "north", "south", "east", "man",
-    "west", "child", "children", "computer", "paper", "music", "river", "car", "pigeon"
+    "west", "child", "children", "example", "paper", "music", "river", "car", "pigeon"
     "Power Rangers", "feet", "book", "science", "room", "friend", "idea", "fish",
     "mountain", "horse", "watch", "color", "face", "wood", "list", "bird",  "feather",
     "body", "fart", "family", "song", "door", "forest", "wind", "ship", "area",
-    "rock", "Captain Planet", "fire", "problem", "airplane", "top", "bottom", "king",
+    "rock", "", "fire", "problem", "airplane", "top", "bottom", "king",
     "space", "whale", "unicorn", "narwhal", "furniture", "sunset", "sunburn", "Grumpy cat",
 ];
 var wordcount;
 
+// Setup new word function that takes a random postion in the word array
 function newWord() {
 	wordcount = Math.floor(Math.random() * (words.length));
 	return words[wordcount];
 };
 
+// Setup connection event in the io object and send userlist
 io.on('connection', function (socket) {
 	io.emit('userlist', users);
 
+	// Setup join event on the socket, passing the username to the users table and logging the info
 	socket.on('join', function(name) {
 		socket.username = name;
-
 		socket.join(name);
 		console.log(socket.username + ' has joined. ID: ' + socket.id);
-
 		users.push(socket.username);
 
+
 		if (users.length == 1 || typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
-
 			socket.join('drawer');
-
 			io.in(socket.username).emit('drawer', socket.username);
 			console.log(socket.username + ' is a drawer');
-
 			io.in(socket.username).emit('draw word', newWord());
-		} 
-
-		else {
+		} else {
 
 			socket.join('guesser');
 
