@@ -6,5 +6,5 @@
 * Node.js
 * Express
 * Socket.io
-* Jquery
+* jQuery
 

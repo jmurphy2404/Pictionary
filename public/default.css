@@ -59,19 +59,19 @@ h1 {
     background-color: #4A4A4A;
     opacity: .8;
     display: none;
-    z-index: 900;
+    z-index: 1;
 }
 
 .user {
     position: relative;
-    background-color:#05668d;
+    background-color: #05668d;
     max-height: 300px;
     max-width: 300px;
     text-align: center;
     padding: 25px 5px;
     top: 20%;
     margin: auto;
-    border-radius: 6px;
+    border-radius: 5px;
 }
 
 #username {
@@ -216,4 +216,3 @@ canvas {
 .clear, .white {
     background-color: white;
 }
-

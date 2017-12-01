@@ -1,3 +1,4 @@
+// Initialize variables
 var socket = io();
 var user;
 var context;
@@ -5,7 +6,7 @@ var canvas;
 var click = false;
 var users = [];
 
-
+// Username setup funcction
 function usernameAsk() {
     $('.grey-out').fadeIn(300);
     $('.user').fadeIn(300);
@@ -31,10 +32,12 @@ function usernameAsk() {
     });
 };
 
+// Function to clear canvas
 var clearScreen = function() {
     context.clearRect(0, 0, canvas[0].width, canvas[0].height);
 };
 
+// Guesser setup
 var guesser = function() {
     clearScreen();
     click = false;
@@ -58,6 +61,7 @@ var guesser = function() {
     });
 };
 
+// When a word is guessed
 var guessword = function(data){
     $('#guesses').text(data.username + "'s guess: " + data.guessword);
 
@@ -69,11 +73,13 @@ var guessword = function(data){
     }
 };
 
+// Places chosen word in span for drawer to see
 var drawWord = function(word) {
     $('span.word').text(word);
     console.log('Your word to draw is: ' + word);
 };
 
+// Create html to place users in userlist
 var userlist = function(names) {
     users = names;
     var html = '<p class="chatbox-header">' + 'Players' + '</p>';
@@ -84,16 +90,19 @@ var userlist = function(names) {
     $('ul').html(html);
 };
 
+// Function executed on new drawer, with cleared canvas and no guesses shown
 var newDrawer = function() {
     socket.emit('new drawer', user);
     clearScreen();
     $('#guesses').empty();
 };
 
+// Correct answer function
 var correctAnswer = function(data) {
     $('#guesses').html('<p>' + data.username + ' guessed correctly!' + '</p>');
 };
 
+// Reset screen function
 var reset = function(name) {
     clearScreen();
     $('#guesses').empty();
@@ -101,6 +110,7 @@ var reset = function(name) {
     $('#guesses').html('<p>' + name + ' is the new drawer' + '</p>');
 };
 
+// Draw functionality
 var draw = function(obj) {
     context.fillStyle = obj.color;
     context.beginPath();
@@ -108,6 +118,7 @@ var draw = function(obj) {
     context.fill();
 };
 
+// Gameplay function
 var pictionary = function() {
     clearScreen();
     click = true;
@@ -159,6 +170,7 @@ var pictionary = function() {
 
 };
 
+// Function below executes on ready
 $(document).ready(function() {
 
     canvas = $('#canvas');
