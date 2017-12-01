@@ -24,7 +24,7 @@ var words = [
     "big foot", "sister", "world", "head", "page", "country", "question",  "breakfast",
     "shiba inu", "school", "plant", "food", "sun", "state", "eye", "city", "tree",
     "farm", "story", "sea", "night", "day", "life", "north", "south", "east", "man",
-    "west", "child", "children", "example", "paper", "music", "river", "car", "pigeon"
+    "west", "child", "children", "example", "paper", "music", "river", "car", "pigeon",
     "Power Rangers", "feet", "book", "science", "room", "friend", "idea", "fish",
     "mountain", "horse", "watch", "color", "face", "wood", "list", "bird",  "feather",
     "body", "fart", "family", "song", "door", "forest", "wind", "ship", "area",
