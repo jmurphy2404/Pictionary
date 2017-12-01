@@ -7,43 +7,45 @@
 	<link rel="stylesheet" href="default.css">
 </head>
 
-<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="main.js"></script>
+<body>
+	<script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="main.js"></script>
+	<div class="grey-out hidden">
+	    <form class="user">
+	    	<label for="username">Enter username</label><input id="username" type="text" maxlength="12" autofocus>
+	    	<button type="submit" id="submitname">Submit</button>
+	    </form>
+	</div>
 
-<div class="grey-out hidden">
-    <form class="user">
-    	<label for="username">Enter username</label><input id="username" type="text" maxlength="12" autofocus>
-    	<button type="submit" id="submitname">Submit</button>
-    </form>
-</div>
+	<div id="main">
+	    <h1>Pictionary!</h1>
+	        <div class="row">
+	            <canvas id="canvas"></canvas><div class="users"><ul></ul>
+	            <div id="guesses"></div>
+	            <div class="draw-buttons">
+	                <button value="0" class="clear" type="button">X</button>
+	                <button value="#000000" class="black" type="button"></button>
+	                <button value="#0000EE" class="blue" type="button"></button>
+	                <button value="#66CD00" class="green" type="button"></button>
+	                <button value="#FF0000" class="red" type="button"></button>
+	                <button value="#FFFF00" class="yellow" type="button"></button>
+	                <button value="#FFFFFF" class="white" type="button"></button>
 
-<div id="main">
-    <h1>Pictionary!</h1>
-        <div class="row">
-            <canvas id="canvas"></canvas><div class="users"><ul></ul>
-            <div id="guesses"></div>
-            <div class="draw-buttons">
-                <button value="0" class="clear" type="button">X</button>
-                <button value="#000000" class="black" type="button"></button>
-                <button value="#0000EE" class="blue" type="button"></button>
-                <button value="#66CD00" class="green" type="button"></button>
-                <button value="#FF0000" class="red" type="button"></button>
-                <button value="#FFFF00" class="yellow" type="button"></button>
-                <button value="#FFFFFF" class="white" type="button"></button>
-
-            </div>
-            <div class="chat">
-            	<!-- replace with <ul> tags and make a jquery to insert the chat items as lis in the chat-box -->
-            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget scelerisque metus, quis porttitor tellus. Nam tincidunt leo condimentum sapien pulvinar, et auctor urna iaculis. Phasellus facilisis rhoncus egestas. Donec nec quam ut nisi aliquet elementum sit amet vitae tortor. Vivamus sagittis nec sapien in euismod. Morbi nec enim ligula. Donec dictum leo luctus bibendum tincidunt. Quisque pulvinar nunc leo, sit amet iaculis nisi lobortis a. Vestibulum rutrum porttitor quam et pulvinar. Aliquam id vehicula lectus. Nam commodo egestas sem eu dictum. Aenean tristique libero id leo posuere, id hendrerit purus ornare. Ut molestie tortor in sagittis rhoncus. Suspendisse a nisi in elit rhoncus iaculis.</p>
-            </div>
-        </div>
-    <div id="top-message">
-        <div class="draw hidden" >
-            <p>The current word is: <span class="word"></span></p>
-        </div>
-        <form id="guess" class="hidden" >
-            Guess the word! <input name="guess" class="guess-input" type="text">
-        </form> 
-    </div>
-</div>
+	            </div>
+	            <div class="chat">
+	            	<!-- replace with <ul> tags and make a jquery to insert the chat items as lis in the chat-box -->
+	            	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget scelerisque metus, quis porttitor tellus. Nam tincidunt leo condimentum sapien pulvinar, et auctor urna iaculis. Phasellus facilisis rhoncus egestas. Donec nec quam ut nisi aliquet elementum sit amet vitae tortor. Vivamus sagittis nec sapien in euismod. Morbi nec enim ligula. Donec dictum leo luctus bibendum tincidunt. Quisque pulvinar nunc leo, sit amet iaculis nisi lobortis a. Vestibulum rutrum porttitor quam et pulvinar. Aliquam id vehicula lectus. Nam commodo egestas sem eu dictum. Aenean tristique libero id leo posuere, id hendrerit purus ornare. Ut molestie tortor in sagittis rhoncus. Suspendisse a nisi in elit rhoncus iaculis.</p>
+	            </div>
+	        </div>
+	    <div id="top-message">
+	        <div class="draw hidden" >
+	            <p>The current word is: <span class="word"></span></p>
+	        </div>
+	        <form id="guess" class="hidden" >
+	            Guess the word! <input name="guess" class="guess-input" type="text">
+	        </form> 
+	    </div>
+			</div>
+	</div>
+</body>

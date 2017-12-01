@@ -13,13 +13,13 @@ function usernameAsk() {
         event.preventDefault();
         user = $('#username').val().trim();
 
-        if (user == '') {
+        if(user == '') {
             return false
         };
 
         var index = users.indexOf(user);
 
-        if (index > -1) {
+        if(index > -1) {
             alert(user + ' already exists');
             return false
         };
@@ -44,11 +44,10 @@ var guesser = function() {
     console.log('You are a guesser');
     $('#guess').show();
     $('.guess-input').focus();
-
     $('#guess').on('submit', function() {
         event.preventDefault();
         var guess = $('.guess-input').val();
-
+        
         if (guess == '') {
             return false
         };
@@ -78,6 +77,7 @@ var drawWord = function(word) {
 var userlist = function(names) {
     users = names;
     var html = '<p class="chatbox-header">' + 'Players' + '</p>';
+    
     for (var i = 0; i < names.length; i++) {
         html += '<li>' + names[i] + '</li>';
     };
@@ -104,8 +104,7 @@ var reset = function(name) {
 var draw = function(obj) {
     context.fillStyle = obj.color;
     context.beginPath();
-    context.arc(obj.position.x, obj.position.y,
-                     3, 0, 2 * Math.PI);
+    context.arc(obj.position.x, obj.position.y, 3, 0, 2 * Math.PI);
     context.fill();
 };
 
@@ -150,10 +149,9 @@ var pictionary = function() {
 
     canvas.on('mousemove', function(event) {
         var offset = canvas.offset();
-        obj.position = {x: event.pageX - offset.left,
-                        y: event.pageY - offset.top};
+        obj.position = {x: event.pageX - offset.left, y: event.pageY - offset.top};
         
-        if (drawing == true && click == true) {
+        if(drawing == true && click == true) {
             draw(obj);
             socket.emit('draw', obj);
         };

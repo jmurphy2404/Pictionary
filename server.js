@@ -17,19 +17,19 @@ server.listen(process.env.PORT || 8080, function() {
 // Setup variables below, including wordlist for gameplay
 var users = [];
 var words = [
-    "word", "letter", "number", "person", "man", "police", "people", "sound", "water",
-     "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth", "Trump",
-    "girl", "serial killer", "Oregon Trail", "week", "month", "name", "elephant", "line",
+    "word", "letter", "number", "person", "man", "police", "people", "sound",
+     "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth",
+    "girl", "serial killer", "week", "month", "name", "elephant", "line", "feather",
     "land", "home", "hand", "house", "picture", "animal", "mother", "father", "air",
-    "big foot", "sister", "world", "head", "page", "country", "question",  "breakfast",
-    "shiba inu", "school", "plant", "food", "sun", "state", "eye", "city", "tree",
+    "big foot", "sister", "world", "head", "page", "country", "question", "pigeon",
+    "school", "plant", "food", "sun", "state", "eye", "city", "tree", "Trump",
     "farm", "story", "sea", "night", "day", "life", "north", "south", "east", "man",
-    "west", "child", "children", "example", "paper", "music", "river", "car", "pigeon",
+    "west", "child", "children", "example", "paper", "music", "river", "car",
     "Power Rangers", "feet", "book", "science", "room", "friend", "idea", "fish",
-    "mountain", "horse", "watch", "color", "face", "wood", "list", "bird",  "feather",
+    "mountain", "horse", "watch", "color", "face", "wood", "list", "bird", "water",
     "body", "fart", "family", "song", "door", "forest", "wind", "ship", "area",
-    "rock", "", "fire", "problem", "airplane", "top", "bottom", "king",
-    "space", "whale", "unicorn", "narwhal", "furniture", "sunset", "sunburn", "Grumpy cat",
+    "rock", "", "fire", "problem", "airplane", "top", "bottom", "king", "breakfast",
+    "space", "whale", "unicorn", "narwhal", "furniture", "sunset", "sunburn"
 ];
 var wordcount;
 
@@ -51,12 +51,12 @@ io.on('connection', function (socket) {
 		users.push(socket.username);
 
 
-		if (users.length == 1 || typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
+		if(users.length == 1 || typeof io.sockets.adapter.rooms['drawer'] === 'undefined') {
 			socket.join('drawer');
 			io.in(socket.username).emit('drawer', socket.username);
 			console.log(socket.username + ' is a drawer');
 			io.in(socket.username).emit('draw word', newWord());
-		} else {
+		}else{
 
 			socket.join('guesser');
 
@@ -79,50 +79,36 @@ io.on('connection', function (socket) {
 
 	socket.on('disconnect', function() {
 		for (var i = 0; i < users.length; i++) {
-
-			if (users[i] == socket.username) {
+			if(users[i] == socket.username) {
 				users.splice(i, 1);
 			};
 		};
+		
 		console.log(socket.username + ' has disconnected.');
-
 		io.emit('userlist', users);
 
-		if ( typeof io.sockets.adapter.rooms['drawer'] === "undefined") {
-			
+		if(typeof io.sockets.adapter.rooms['drawer'] === "undefined") {
 			var x = Math.floor(Math.random() * (users.length));
 			console.log(users[x]);
-
 			io.in(users[x]).emit('new drawer', users[x]);
 		};
 	});
 
 	socket.on('new drawer', function(name) {
-
 		socket.leave('guesser');
-
 		socket.join('drawer');
 		console.log('new drawer emit: ' + name);
-
-		socket.emit('drawer', name);
-		
+		socket.emit('drawer', name);	
 		io.in('drawer').emit('draw word', newWord());
-	
 	});
 
 	socket.on('swap rooms', function(data) {
-
 		socket.leave('drawer');
 		socket.join('guesser');
-
 		socket.emit('guesser', socket.username);
-
 		io.in(data.to).emit('drawer', data.to);
-
 		io.in(data.to).emit('draw word', newWord());
-	
 		io.emit('reset', data.to);
-
 	});
 
 	socket.on('correct answer', function(data) {
