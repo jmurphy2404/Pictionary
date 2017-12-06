@@ -170,7 +170,7 @@ var pictionary = function() {
 
 };
 
-// Function below executes on ready
+// Function below executes on ready, establishing the game
 $(document).ready(function() {
 
     canvas = $('#canvas');
