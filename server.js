@@ -25,9 +25,9 @@ var words = [
     "school", "plant", "food", "sun", "state", "eye", "city", "tree", "Trump", "puppy",
     "farm", "story", "egg", "night", "day", "life", "north", "south", "east", "man",
     "west", "child", "children", "paper", "music", "river", "car", "Superman",
-    "beetle", "feet", "book", "duck", "friend", "idea", "fish", "mouse", "owl",
+    "beetle", "feet", "book", "duck", "friend", "fish", "mouse", "owl", "soda",
     "mountain", "horse", "watch", "color", "face", "wood", "Mars", "bird", "water",
-    "body", "family", "song", "door", "forest", "wind", "ship", "area",
+    "body", "family", "song", "door", "forest", "wind", "ship", "area", "hat",
     "rock", "fire", "problem", "airplane", "top", "bottom", "king", "breakfast",
     "space", "whale", "unicorn", "sunset", "sunburn", "whale", "coffee", "butterfly"
 ];
