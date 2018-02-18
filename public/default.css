@@ -200,24 +200,35 @@ canvas {
 
 .black {
     background-color: #000000;
+    width: 6%;
 }
 
 .blue {
     background-color: #0000EE;
+    width: 6%;
 }
 
 .green {
     background-color: #66CD00;
+    width: 6%;
 }
 
 .red {
     background-color: #FF0000;
+    width: 6%;
 }
 
 .yellow {
     background-color: #FFFF00;
+    width: 6%;
 }
 
-.clear, .white {
+.white {
     background-color: white;
+    width: 6%;
+}
+
+.clear {
+    width: 12%;
+    vertical-align: bottom;
 }
