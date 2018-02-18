@@ -129,13 +129,37 @@ var reset = function(name) {
     $('#guesses').html('<p>' + name + ' is the new drawer' + '</p>');
 };
 
-// Draw functionality
+
+
+
+//Line drawing function
+function drawLine(fromx, fromy, tox, toy){
+        ctx.moveTo(fromx, fromy);
+        ctx.lineTo(tox, toy);
+        ctx.stroke();
+    }
+
+// Draw functionality v1 replaced by v2 to improve on the circle draw methods inherent latency issues
+//var draw = function(obj) {
+//    context.fillStyle = obj.color;
+//    context.beginPath();
+//    context.arc(obj.position.x, obj.position.y, 6, 0, 2 * Math.PI);
+//    context.fill();
+//};
+
+//V2 draw function to solve v1's "skipping" issues
 var draw = function(obj) {
-    context.fillStyle = obj.color;
-    context.beginPath();
-    context.arc(obj.position.x, obj.position.y, 3, 0, 2 * Math.PI);
-    context.fill();
-};
+    if(drawing){
+
+            drawLine(prev.x, prev.y, e.pageX, e.pageY);
+
+            prev.x = e.pageX;
+            prev.y = e.pageY;
+        }
+    };
+}
+
+
 
 // Gameplay function
 var pictionary = function() {
@@ -171,23 +195,38 @@ var pictionary = function() {
     });
 
     canvas.on('mousedown', function(event) { 
-        drawing = true;   
+        e.preventDefault();
+        drawing = true;
+        prev.x = e.pageX;
+        prev.y = e.pageY;   
     });
     canvas.on('mouseup', function(event) {
         drawing = false;
     });
 
-    canvas.on('mousemove', function(event) {
-        var offset = canvas.offset();
-        obj.position = {x: event.pageX - offset.left, y: event.pageY - offset.top};
-        
-        if(drawing == true && click == true) {
-            draw(obj);
-            socket.emit('draw', obj);
-        };
-    });
+    cavas.on('mousemove',function(event){
+        if($.now() - lastEmit > 30){
+            socket.emit('mousemove',{
+                'x': event.pageX,
+                'y': event.pageY,
+                'drawing': drawing,
+                'id': id
+            });
+            lastEmit = $.now();
+        }
 
-};
+        // Draw a line for the current user's movement, as it is
+        // not received in the socket.on('moving') event above
+
+        if(drawing){
+
+            drawLine(prev.x, prev.y, e.pageX, e.pageY);
+
+            prev.x = e.pageX;
+            prev.y = e.pageY;
+    };
+
+});
 
 // Function below executes on ready, establishing the game
 $(document).ready(function() {
