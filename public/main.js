@@ -203,30 +203,27 @@ var pictionary = function() {
         drawing = false;
     });
 
-    cavas.on('mousemove',function(event){
+    canvas.on('mousemove',function(event){
+        lastEmit = $.now();
         if($.now() - lastEmit > 30){
             socket.emit('mousemove',{
-                'x': event.pageX,
-                'y': event.pageY,
+                'x': e.pageX,
+                'y': e.pageY,
                 'drawing': drawing,
                 'id': id
             });
-            lastEmit = $.now();
         }
 
         // Draw a line for the current user's movement, as it is
         // not received in the socket.on('moving') event above
 
         if(drawing){
-
-            drawLine(prev.x, prev.y, e.pageX, e.pageY);
-
             prev.x = e.pageX;
             prev.y = e.pageY;
-    };
-
-});
-
+            drawLine(prev.x, prev.y, e.pageX, e.pageY);
+        };
+    });
+};
 // Function below executes on ready, establishing the game
 $(document).ready(function() {
 
