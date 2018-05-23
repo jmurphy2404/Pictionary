@@ -137,28 +137,27 @@ function drawLine(fromx, fromy, tox, toy){
         ctx.moveTo(fromx, fromy);
         ctx.lineTo(tox, toy);
         ctx.stroke();
+        ctx.lineJoin = ctx.lineCap = 'round';
     }
 
 // Draw functionality v1 replaced by v2 to improve on the circle draw methods inherent latency issues
-//var draw = function(obj) {
-//    context.fillStyle = obj.color;
-//    context.beginPath();
-//    context.arc(obj.position.x, obj.position.y, 6, 0, 2 * Math.PI);
-//    context.fill();
-//};
+var draw = function(obj) {
+   context.fillStyle = obj.color;
+   context.beginPath();
+   context.arc(obj.position.x, obj.position.y, 6, 0, 2 * Math.PI);
+   context.fill();
+};
 
 //V2 draw function to solve v1's "skipping" issues
-var draw = function(obj) {
-    if(drawing){
+// var draw = function(obj) {
+//     if(drawing){
 
-            drawLine(prev.x, prev.y, e.pageX, e.pageY);
+//             drawLine(prev.x, prev.y, e.pageX, e.pageY);
 
-            prev.x = e.pageX;
-            prev.y = e.pageY;
-        }
-    };
-}
-
+//             prev.x = e.pageX;
+//             prev.y = e.pageY;
+//         }
+//     };
 
 
 // Gameplay function
@@ -195,7 +194,7 @@ var pictionary = function() {
     });
 
     canvas.on('mousedown', function(event) { 
-        e.preventDefault();
+        event.preventDefault();
         drawing = true;
         prev.x = e.pageX;
         prev.y = e.pageY;   
