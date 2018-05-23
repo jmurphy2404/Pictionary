@@ -1,8 +1,8 @@
 //add vars for chat
-//connect js and jqquery for chat
+//connect js and jquery for chat
 //html edits to make sure you  can
 //fix with proper names (if not done already)
-//error tests (DOO AT BEGINNING IF GONNA DOOOOOOOOOOOOO)
+//error tests (DO AT BEGINNING IF GONNA DO)
 //formatting change - rearrange all reatures:
 //chat all down left
 //game down right next to it
@@ -12,6 +12,9 @@
 //(if guesses arent with names)
 //rules in tab with chat, and also deah center after enter
 //username - maybe rules/gamplay video/screencast
+
+
+// FIREBASE ADDITION FOR CHAT AND USERNAMES ITS THE PERFECT DB HERE
 
 
 
@@ -250,3 +253,4 @@ $(document).ready(function() {
     socket.on('clear screen', clearScreen);
 
 });
+
