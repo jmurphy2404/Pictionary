@@ -32,17 +32,14 @@ var users = [];
 function usernameAsk() {
     $('.grey-out').fadeIn(300);
     $('.user').fadeIn(300);
-    $('.user').submit(function(){
-        event.preventDefault();
+    $('.user').submit(function(e){
+        e.preventDefault();
         user = $('#username').val().trim();
 
         if(user == '') {
             return false
         };
-
-        var index = users.indexOf(user);
-
-        if(index > -1) {
+        if(user.indexOf > -1) {
             alert(user + ' already exists');
             return false
         };
@@ -69,8 +66,8 @@ var guesser = function() {
     console.log('You are a guesser');
     $('#guess').show();
     $('.guess-input').focus();
-    $('#guess').on('submit', function() {
-        event.preventDefault();
+    $('#guess').on('submit', function(e) {
+        e.preventDefault();
         var guess = $('.guess-input').val();
         
         if (guess == '') {
