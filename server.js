@@ -16,8 +16,7 @@ server.listen(process.env.PORT || 8080, function() {
 
 // Setup variables below, including wordlist for gameplay
 var users = [];
-var words = [
-    "word", "letter", "number", "person", "man", "people", "sound", "apple", 
+var words = ["word", "letter", "number", "person", "man", "people", "sound", "apple",
     "men", "woman", "women", "boy", "seagull", "hotdog", "hamburger", "Earth",
     "girl", "week", "month", "name", "elephant", "feather", "sled", "keyboard",
     "land", "home", "hand", "house", "picture", "animal", "mother", "father", "air",
@@ -29,8 +28,7 @@ var words = [
     "mountain", "horse", "watch", "color", "face", "wood", "Mars", "bird", "water",
     "body", "family", "song", "door", "forest", "wind", "ship", "area", "hat",
     "rock", "fire", "problem", "airplane", "top", "bottom", "king", "breakfast",
-    "space", "whale", "unicorn", "sunset", "sunburn", "whale", "coffee", "butterfly"
-];
+    "space", "whale", "unicorn", "sunset", "sunburn", "whale", "coffee", "butterfly"];
 var wordcount;
 
 // Setup new word function that takes a random postion in the word array
