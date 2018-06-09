@@ -1,3 +1,10 @@
+//fix draw
+//push up changes for login
+//correct user role assignment when initializing
+//cross broswer support
+//react?
+
+
 //add vars for chat
 //connect js and jquery for chat
 //html edits to make sure you  can
